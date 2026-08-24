@@ -244,6 +244,25 @@ p{margin:0;}
 .run-opt.active{background:var(--magenta);border-color:var(--magenta);color:#fff;}
 .run-opt:hover:not(.active){border-color:var(--magenta);color:var(--magenta-deep);}
 
+.strength-lib{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-md);padding:1.1rem 1.15rem;box-shadow:var(--shadow-sm);margin-bottom:1.2rem;}
+.strength-lib h3{font-size:1rem;font-weight:800;margin-bottom:.3rem;}
+.strength-lib > p{font-size:.85rem;color:var(--ink-soft);margin-bottom:.9rem;}
+.strength-lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.9rem;}
+.strength-video-card{border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:var(--paper);}
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;background:#000;}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+.video-caption{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.7rem .9rem;}
+.video-caption span{font-weight:700;font-size:.86rem;}
+.video-caption a{font-size:.78rem;font-weight:700;color:var(--magenta-deep);text-decoration:none;white-space:nowrap;}
+.video-caption a:hover{text-decoration:underline;}
+
+.week-map-card{background:var(--surface-2);border-radius:var(--radius-md);padding:.95rem 1.05rem;margin-bottom:1rem;}
+.week-map-card h4{font-size:.85rem;font-weight:800;margin-bottom:.75rem;}
+.week-map-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem;}
+.week-map-col-head{font-size:.78rem;font-weight:800;color:var(--magenta-deep);margin-bottom:.4rem;}
+.week-map-row{font-size:.8rem;line-height:1.65;color:var(--ink-soft);}
+.week-map-row b{color:var(--ink);font-weight:700;}
+
 .run-plan-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.35rem;}
 .run-plan-title{font-family:var(--font-display);font-weight:800;font-size:1.15rem;}
 .run-plan-weeks{font-size:.8rem;font-weight:700;color:var(--magenta-deep);background:var(--magenta-tint);padding:.3em .8em;border-radius:999px;}
@@ -504,6 +523,20 @@ p{margin:0;}
       <p>ארבע תוכניות, לפי המרחק שבחרתם (5 או 10 ק״מ) ולפי כמה פעמים אתם מגיעים לאימון הקבוצתי בשבוע. השיטה בכולן היא ריצה-הליכה מתקדמת — מתחילים בסבבים קצרים ומתארכים בהדרגה, עם "שבועות הפחתה" קבועים כל 3–4 שבועות כדי לתת לגוף להתאושש ולמנוע פציעות עומס.</p>
       <p>תוכניות ה-5 ק״מ נפרסות על 9 שבועות, ותוכניות ה-10 ק״מ על 11 שבועות — טווחים סטנדרטיים בעולם הריצה למתחילים ומתקדמים-בינוניים. השבועות כתובים כ"שבוע 1, שבוע 2..." ולא לפי תאריך, כך שאפשר להתחיל בכל נקודה בעונה.</p>
     </div>
+    <div class="strength-lib">
+      <h3>מאגר אימוני הכוח העצמאיים</h3>
+      <p>בכל יום "כוח עצמאי" בתוכניות למטה — בוחרים אחד מהשניים ועוקבים אחריו בבית.</p>
+      <div class="strength-lib-grid">
+        <div class="strength-video-card">
+          <div class="video-embed"><iframe src="https://player.vimeo.com/video/1220872802" title="אימון כוח 1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-caption"><span>אימון כוח 1</span><a href="https://vimeo.com/1220872802" target="_blank" rel="noopener">Vimeo ↗</a></div>
+        </div>
+        <div class="strength-video-card">
+          <div class="video-embed"><iframe src="https://player.vimeo.com/video/1220872799" title="אימון כוח 2" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-caption"><span>אימון כוח 2</span><a href="https://vimeo.com/1220872799" target="_blank" rel="noopener">Vimeo ↗</a></div>
+        </div>
+      </div>
+    </div>
     <div class="run-selector">
       <div class="run-selector-group">
         <span class="run-selector-label">מרחק</span>
@@ -714,9 +747,22 @@ renderAll();
 const TIPS_BASE = [
   'חימום: לפני כל אימון ריצה או כוח — 5 דקות הליכה מהירה + הנעת מפרקים.',
   'לא הצלחתם להשלים שבוע? חוזרים עליו שוב לפני שממשיכים הלאה. אין בעיה להאריך את התוכנית, יש בעיה לדלג קדימה.',
-  'אימון הכוח נבחר מתוך מאגר אימוני הקבוצה — TRX, משקולות חופשיות או משקל גוף.',
+  'אימון הכוח העצמאי — אחד מהסרטונים במאגר אימוני הכוח למעלה (אימון כוח 1 או 2).',
   'להיעזר בטיימר אינטרוולים בטלפון כדי למדוד בדיוק את זמני הריצה וההליכה, לא "בערך".'
 ];
+const WEEK_MAP_HTML =
+  '<div class="week-map-card"><h4>מתי בפועל בשבוע</h4><div class="week-map-grid">'+
+  '<div><div class="week-map-col-head">אם יום הקבוצה שלכם — שני</div>'+
+    '<div class="week-map-row"><b>שני</b> — יום הקבוצה</div>'+
+    '<div class="week-map-row"><b>רביעי</b> — ריצה עצמאית קצרה</div>'+
+    '<div class="week-map-row"><b>חמישי</b> — כוח עצמאי (רשות)</div>'+
+    '<div class="week-map-row"><b>שבת</b> — ריצה עצמאית ארוכה</div></div>'+
+  '<div><div class="week-map-col-head">אם יום הקבוצה שלכם — רביעי</div>'+
+    '<div class="week-map-row"><b>רביעי</b> — יום הקבוצה</div>'+
+    '<div class="week-map-row"><b>שישי</b> — ריצה עצמאית קצרה</div>'+
+    '<div class="week-map-row"><b>שבת</b> — כוח עצמאי (רשות)</div>'+
+    '<div class="week-map-row"><b>שני</b> — ריצה עצמאית ארוכה</div></div>'+
+  '</div></div>';
 const TIP_1X_EXTRA = 'יום הקבוצה שלכם גמיש (שני או רביעי) — רק חשוב לשמור לפחות יום מנוחה מלא בין כל שני ימי ריצה עצמאיים, כדי לא לרוץ יומיים ברצף.';
 
 const RUN_PLANS = {
@@ -804,7 +850,9 @@ function renderRunPlan(){
 
   let html = '<div class="run-plan-head"><span class="run-plan-title">'+plan.title+'</span><span class="run-plan-weeks">'+plan.weeks+' שבועות</span></div>';
   html += '<p class="run-plan-note">'+plan.note+'</p>';
+  if(currentFreq === '1x') html += WEEK_MAP_HTML;
 
+  const RUN_LABEL_HINT = {'קצרה':'קצרה (יומיים אחרי יום הקבוצה)', 'ארוכה':'ארוכה (ראו טבלת ימים למעלה)'};
   plan.rows.forEach(function(row){
     html += '<div class="week-card'+(row.cutback?' cutback':'')+'">';
     html += '<div class="week-head"><span class="week-num">שבוע '+row.w+'</span>'+(row.cutback?'<span class="week-badge">שבוע הפחתה</span>':'')+'</div>';
@@ -814,10 +862,10 @@ function renderRunPlan(){
     html += weekRow('כוח עצמאי', row.strength);
     if(Array.isArray(row.run)){
       row.run.forEach(function(r){
-        html += weekRow('ריצה עצמאית — '+r.label, r.detail);
+        html += weekRow('ריצה עצמאית — '+(RUN_LABEL_HINT[r.label]||r.label), r.detail);
       });
     } else {
-      html += weekRow('ריצה/הליכה עצמאית', row.run);
+      html += weekRow('ריצה/הליכה עצמאית — יום ו׳ או ש׳', row.run);
     }
     html += '</div></div>';
   });
